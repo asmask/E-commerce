@@ -28,4 +28,4 @@ Démarrer le serveur
 
 $ php bin/console server:run
 
-<img src="http://placehold.it/300x300" />
+<img src="file:///C:/Users/ASMA/Desktop/images/Capture.PNG" />
