@@ -28,3 +28,4 @@ Démarrer le serveur
 
 $ php bin/console server:run
 
+<img src="http://placehold.it/300x300" />
