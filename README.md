@@ -28,4 +28,4 @@ Démarrer le serveur
 
 $ php bin/console server:run
 
-<img src="file:///C:/Users/ASMA/Desktop/images/Capture.PNG" />
+<img src="images/Capture1.PNG" />
