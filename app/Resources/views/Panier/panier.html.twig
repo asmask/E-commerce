@@ -1,0 +1,76 @@
+{% extends 'font_base.html.twig' %}
+{% block body %}
+<div class="cart_area section_padding_100 clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="cart-table clearfix">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+{% set pr = null %}
+					{% for prod in products %}
+					{% set pr = prod %}
+    <tr>
+<td class="cart_product_img d-flex align-items-center">
+ <a href="#"><img src="{{asset('')}}{{prod.image }}" alt="{{prod.libelle}}"></a>
+ <h6>{{prod.libelle }}</h6>
+  </td>
+<td class="price"><span>{{prod.prix}} DT</span></td>
+
+<td class="qty">
+<div class="quantity">
+<span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+<input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="{{panier[prod.id]}}">
+<span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;" ><i class="fa fa-plus" aria-hidden="true"></i></span>
+ </div>
+                                        </td>
+                                        <td class="total_price"><span>{{ (prod.prix * panier[prod.id])| number_format(3,',','') }} DT</span></td>
+                                        <td ><span><a  href="{{path('panier_remove_by_id',{'id':prod.id}) }}"  class="btn btn-danger">Delete</a></span></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cart-footer d-flex mt-30">
+                            <div class="back-to-shop w-50">
+                                <a href="{{path('homepage')}}">Continue shooping</a>
+                            </div>
+                            <div class="update-checkout w-50 text-right">
+                                <a href="{{path('panier_remove')}}">clear cart</a>
+                                <a href="#" >Update cart</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <div class="cart-total-area mt-70">
+                            <div class="cart-page-heading">
+                                <h5>Cart total</h5>
+                                <p>Final info</p>
+                            </div>
+
+                            <ul class="cart-total-chart">
+                                <li><span>Subtotal</span> <span>{{ (pr.prix * panier[pr.id])| number_format(3,',','') }} DT</span></li>
+                                <li><span>Shipping</span> <span>6 DT</span></li>
+                                <li><span><strong>Total</strong></span> <span><strong>{{((pr.prix * panier[pr.id]) + 6)| number_format(3,',','') }} DT</strong></span></li>
+                            </ul>
+                            <a href="{{path('commande_new',{'p':pr.id,'total':((pr.prix * panier[pr.id]) + 6)| number_format(3,',','')})}}" class="btn karl-checkout-btn">Proceed to checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}

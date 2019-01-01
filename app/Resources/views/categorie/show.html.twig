@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{%block title%}{{ categorie.libelle }}{%endblock%}
+{% block body %}
+    <h1>Categorie</h1>
+<div class="au-task__item au-task__item--danger">
+                                                <div class="au-task__item-inner">
+                                                  <div class="au-message__item-inner">
+
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap">
+                                                              
+                                                                     <img src="{{asset('')}}{{categorie.image}}" alt="{{categorie.libelle}} image">
+                                                                
+                                                                
+                                                            </div>
+                                                            
+                                                         <h5 class="name">
+                                                            {{ categorie.libelle }}
+                                                                   </h5>
+                                          <p>Id : {{ categorie.id }} </p><p>Description : {{categorie.texte|raw }}</p>
+                                                            </div>
+                                                        
+                                                        <div class="au-message__item-time">
+                                                            <span><strong>Updated at</strong> {% if categorie.updatedAt %}{{ categorie.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</span>
+                                                        </div>
+                                                    </div></div>
+                                            </div>
+                                     
+
+
+          
+  
+       <a href="{{ path('admin_category_edit', { 'id': categorie.id }) }}" type="submit" 
+       class="btn btn-success btn-sm">
+             <i class="zmdi zmdi-edit "></i>  Edit </a>
+      
+            {{ form_start(delete_form) }}
+                <input type="submit" value=" Delete " class="btn btn-danger btn-sm">                    
+            {{ form_end(delete_form) }}
+              <a href="{{ path('admin_category_index') }}">Back to the list</a>
+
+{% endblock %}

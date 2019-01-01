@@ -1,0 +1,41 @@
+
+{% extends 'base.html.twig' %}
+{%block title%}Register{%endblock%}
+{% block body %}
+
+
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                      {{form_start(form)}}
+    {{form_widget(form)}}
+<button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+    {{form_end(form)}}
+                                </div>
+                               
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    Already have account?
+                                    <a href="#">Sign In</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{%block title%}{{ commande.nom }}'s Order{%endblock%}
+{% block body %}
+   <h1>Product</h1>
+<div class="au-task__item au-task__item--danger">
+                                                <div class="au-task__item-inner">
+                                                  <div class="au-message__item-inner">
+                                                    <div class="au-message__item-text">
+                                                     
+                                                                <h5 class="name"> {{ commande.nom }}</h5>
+
+                                                                
+                      <p>Id : {{ commande.id }} </p><p>Email : {{commande.email }}</p>
+                      <h5 class="name">Montant : {{ pcom.prix }}</h5>
+                                                            </div>
+                                                        
+                                                        <div class="au-message__item-time">
+                          <span><strong>Adresse</strong> {{ commande.adresse }}</span></div>
+                                                        <div class="au-message__item-time">
+                                                       <span><strong>Date</strong> {% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</span>
+                                                        </div>
+
+                                                    </div></div>
+                                            </div>
+                                     
+              <a href="{{ path('commande_index') }}">Back to the list</a>
+
+{% endblock %}

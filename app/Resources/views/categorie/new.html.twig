@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{%block title%}New Category{%endblock%}
+{% block body %}
+    <h1>Categorie creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input  class="btn btn-success btn-sm" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_category_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

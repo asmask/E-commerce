@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{%block title%}Categories{%endblock%}
+{% block body %}
+
+<section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <hr class="line-seprate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong class="card-title" v-if="headerText">Category list</strong>
+                    </div>
+                    
+                  <div class="card-body p-0">
+                    <table class="table table-hover table-striped table-align-middle mb-0">
+
+                                        <thead>
+                                            <tr>    
+                                                    <th></th>
+                                                    <th>Id</th>
+                                                    <th>Libelle</th>
+                                                    <th>Texte</th>
+                                                    
+                                                    <th>Updatedat</th>
+                                                    <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for categorie in categories %}
+                                            <tr> 
+                                                <td><img src="{{asset('')}}{{categorie.image}}" alt="{{categorie.libelle}} image" style="width;10px;" ></td>
+                                               <td><a href="{{ path('admin_category_show', { 'id': categorie.id }) }}">{{ categorie.id }}</a></td>
+                <td class="status--process">{{ categorie.libelle }}</td>
+                <td>{{ categorie.texte|raw }}</td>
+                
+                <td>{% if categorie.updatedAt %}{{ categorie.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                 <td>
+                                       <div class="table-data-feature">
+                                                  <a  href="{{ path('admin_category_show', { 'id': categorie.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </a>  
+                                                    <a  href="{{ path('admin_category_edit', { 'id': categorie.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+          
+                                                    
+                                                </div>
+
+                </td>
+                                            </tr>
+                                       {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE-->
+                                 </div>
+                                 <a href="{{ path('admin_category_new') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add Category</a>
+                           
+                        </div>
+                     
+                   
+                  
+   
+    
+{% endblock %}

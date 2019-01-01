@@ -1,0 +1,229 @@
+{% extends 'base.html.twig' %}
+{%block title%}Back-office{%endblock%}
+{% block body %}
+ <div class="page-wrapper">
+    
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+
+
+            <!-- WELCOME-->
+            <section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title-4">Welcome
+                                <span>SKHIRI ASMA </span>
+                            </h1>
+                            <hr class="line-seprate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END WELCOME-->
+
+            <!-- STATISTIC-->
+            <section class="statistic statistic2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--green">
+                                <h2 class="number">{{nbc}}</h2>
+                                <span class="desc">Categorie number</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--orange">
+                                <h2 class="number">{{nbp}}</h2>
+                                <span class="desc">Product number</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--blue">
+                                <h2 class="number">{{nbcm}}</h2>
+                                <span class="desc">Commande number</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--red">
+                                <h2 class="number">{{nba}}</h2>
+                                <span class="desc">Avis number</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                            </div>
+                        </div>
+                                             <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--red">
+                                <h2 class="number">{{montto}} DT</h2>
+                                <span class="desc">Montant Total</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END STATISTIC-->
+
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="table-data__tool">
+                                <div class="table-data__tool-left">
+                                    <h3 class="title-5 m-b-35">Categories table</h3>
+                                </div>
+                                <div class="table-data__tool-right">
+                                    <a href="{{ path('admin_category_new') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add item</a>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-responsive-data2">
+                                <table class="table table-data2">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Id</th>
+                                            <th>Libelle</th>
+                                            <th>description</th>
+                                            <th>Updatedat</th>
+                                    		
+               								
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                       				{% for categorie in categories %}
+                                        <tr class="spacer"></tr>
+                                        <tr class="tr-shadow">
+   <td>
+                                                <span class="status--process"><img src="{{asset('')}}{{categorie.image}}" alt="{{categorie.libelle}} image"></span>
+                                            </td>
+                                            <td>{{categorie.id}}</td>
+                                            <td>
+                                                <span class="block-email">{{categorie.libelle}}</span>
+                                            </td>
+                                            <td class="desc">{{categorie.texte|raw}}</td>
+                                            <td>{% if categorie.updatedAt %}{{ categorie.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                         
+                                            
+                                            <td>
+                                                <div class="table-data-feature">
+                                                  <a  href="{{ path('admin_category_show', { 'id': categorie.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </a>  
+                                                    <a  href="{{ path('admin_category_edit', { 'id': categorie.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    
+                                                   
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END DATA TABLE-->
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="table-data__tool">
+                                <div class="table-data__tool-left">
+                                    <h3 class="title-5 m-b-35">Products table</h3>
+                                </div>
+                                <div class="table-data__tool-right">
+                                    <a href="{{ path('admin_product_new') }}" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add item</a>
+                                </div>
+                            </div>
+                            <div class="table-responsive table-responsive-data2">
+                                <table class="table table-data2">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Id</th>
+                                            <th>Libelle</th>
+                                            <th>description</th>
+                                            <th>Prix</th>
+                                    		
+               								
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                       				{% for product in products %}
+                                        <tr class="spacer"></tr>
+                                        <tr class="tr-shadow">
+ <td>
+                                                <span class="status--process"><img src="{{asset('')}}{{product.image}}" alt="{{product.libelle}} image"></span>
+                                            </td>
+                                            <td>{{ product.id }}</td>
+                                            <td>
+                                                <span class="block-email">{{ product.libelle }}</span>
+                                            </td>
+                                            <td class="desc">{{product.texte|raw}}</td>
+                                            <td>{{ product.prix }} DT</td>
+                               
+                                            
+                                                        <td>
+                                                <div class="table-data-feature">
+                                                  <a  "{{ path('admin_product_show', { 'id': product.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </a>  
+                                                    <a  href="{{ path('admin_product_edit', { 'id': product.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </a>
+                                                    
+                                                   
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END DATA TABLE-->
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+
+    </div>
+
+{% endblock %}

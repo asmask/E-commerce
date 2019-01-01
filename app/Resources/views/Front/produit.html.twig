@@ -1,0 +1,90 @@
+{% extends 'font_base.html.twig' %}
+
+{%block body%}
+
+	<section class="shop_grid_area section_padding_100">
+            <div class="container">
+                <div class="row">
+                	 <div class="col-12 col-md-4 col-lg-3">
+                        <div class="shop_sidebar_area">
+                           
+                            <div class="widget catagory mb-50">
+                                <!--  Side Nav  -->
+                                <div class="nav-side-menu">
+                                    <h3 class="mb-0">{{categorie.libelle}}</h3>
+
+						<h6>{{categorie.texte|raw}}</h6>
+						<div class="menu-list">
+							   <div class="widget recommended">
+                                <h6 class="widget-title mb-30">Recommended</h6>
+
+                                <div class="widget-desc">
+                                    <!-- Single Recommended Product -->
+                               
+                                    {% for prod in produits|slice(0, 3) %}
+
+                                    <div class="single-recommended-product d-flex mb-30">
+                                        <div class="single-recommended-thumb mr-3">
+                                            <img src="{{asset('')}}{{prod.image }}" alt="{{prod.texte|raw}}">
+                                        </div>
+                                        <div class="single-recommended-desc">
+                                            <h6>{{prod.libelle}}</h6>
+                                            <p>{{prod.prix}} DT</p>
+                                             <a href="{{ path('product_details',{'id':prod.id}) }}" class="add-to-cart-btn">Show</i></a>
+                                        </div>
+
+                                    </div>
+                                    {% endfor %}
+                                    
+                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-12 col-md-8 col-lg-9">
+                        <div class="shop_grid_product_area">
+                            <div class="row">
+
+                                <!-- Single gallery Item -->
+                                {% for prod in produits %}
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUpBig;">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('')}}{{prod.image }}" alt="{{prod.libelle}}">
+                                        <div class="product-quicview">
+                                       <a href="{{ path('product_details',{'id':prod.id}) }}"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">{{prod.prix}} DT</h4>
+                                        <p>{{prod.libelle}}</p>
+                                        <!-- Add to Cart -->
+                                        <a href="{{ path('panier_ajout', {'id' : prod.id })  }}" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+								{% endfor %}
+
+                            </div>
+                        </div>
+
+                    </div>
+		</div>
+	</div>
+
+</section>
+				
+
+			
+             
+
+
+
+    {%endblock%}
+
+	
+	

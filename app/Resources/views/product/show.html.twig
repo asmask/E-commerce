@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{%block title%}{{ product.libelle }}{%endblock%}
+{% block body %}
+    <h1>{{product.libelle}}</h1>
+<div class="au-task__item au-task__item--danger">
+                                                <div class="au-task__item-inner">
+                                                  <div class="au-message__item-inner">
+
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap">
+                                                              
+                                                                     <img src="{{asset('')}}{{ product.image }}" alt="{{product.libelle}} image">
+                                                                       <img src="{{asset('')}}{{ product.imagesecondaire }}" alt="{{product.libelle}} image">
+                                                                         <img src="{{asset('')}}{{ product.imageprimaire }}" alt="{{product.libelle}} image">
+                                                                
+                                                                
+                                                            </div>
+                                                            
+                                                         <h5 class="name">
+                                                           {{ product.libelle }}
+                                                                   </h5>
+                      <p>Id : {{ product.id }} </p><p>Long Description : {{product.texte|raw }}</p>
+                      <p> Short Description : {{product.description }}</p>
+                         <p>Price:{{ product.prix }} DT</p>
+                                                        
+                                                            </div>
+                                
+                                                    </div></div>
+                                            </div>
+                                     
+
+
+          
+  
+       <a  href="{{ path('admin_product_edit', { 'id': product.id }) }}" type="submit" 
+       class="btn btn-success btn-sm">
+             <i class="zmdi zmdi-edit "></i>  Edit </a>
+      
+            {{ form_start(delete_form) }}
+                <input type="submit" value=" Delete " class="btn btn-danger btn-sm">                    
+            {{ form_end(delete_form) }}
+              <a href="{{ path('admin_product_index') }}">Back to the list</a>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{%block title%}{{avi.nomclt }}'s Avis{%endblock%}
+{% block body %}
+    <h1>Avi</h1>
+<div class="au-task__item au-task__item--danger">
+                                                <div class="au-task__item-inner">
+                                                  <div class="au-message__item-inner">
+
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap">
+
+                                                                     <img src="{{asset('')}}{{ avi.image }}" alt="{{avi.nomclt}} image">
+                                                                
+                                                                
+                                                            </div>
+                                                            
+                                                         <h5 class="name">
+                                                           {{ avi.nomclt }}
+                                                                   </h5>
+                      <p>Id : {{ avi.id }} </p><p>Description : {{avi.texte|raw }}</p>
+                                                            </div>
+                                                        
+                                                        <div class="au-message__item-time">
+                          <span><strong>Ville</strong> {{ avi.ville }} DT</span>
+                                                        </div>
+                                                    </div></div>
+                                            </div>
+                                     
+
+
+          
+  
+       <a   href="{{ path('avis_edit', { 'id': avi.id }) }}" type="submit" 
+       class="btn btn-success btn-sm">
+             <i class="zmdi zmdi-edit "></i>  Edit </a>
+      
+            {{ form_start(delete_form) }}
+                <input type="submit" value=" Delete " class="btn btn-danger btn-sm">                    
+            {{ form_end(delete_form) }}
+              <a href="{{ path('avis_index') }}">Back to the list</a>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'font_base.html.twig' %}
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+<div class="container">
+                        <div class="order-details-confirmation">
+
+                            <div class="cart-page-heading">
+                                <h5>Validation</h5>
+                            </div>
+
+                            <ul class="order-details-form mb-4">
+                                <li><span>our Order</span> <span>The Details</span></li>
+                                <li><span>Code</span> <span>{{commande.id}}</span></li>
+                                <li><span>Client</span> <span>{{commande.nom}}</span></li>
+                                <li><span>Adresse</span> <span>{{commande.adresse}}</span></li>
+                                <li><span>Livraison</span> <span>Free</span></li>
+                                <li><span>Total</span> <span>{{total}} DT</span></li>
+                            </ul>
+
+
+
+                            <a href="{{path('homepage')}}" class="btn karl-checkout-btn">Home Page</a>
+                        </div>
+                    </div>
+
+{% endblock %}

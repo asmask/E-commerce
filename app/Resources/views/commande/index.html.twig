@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{%block title%}Orders{%endblock%}
+{% block body %}
+    <section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <hr class="line-seprate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <strong class="card-title" v-if="headerText">Orders list</strong>
+                    </div>
+                    
+                  <div class="card-body p-0">
+                    <table class="table table-hover table-striped table-align-middle mb-0">
+
+                                        <thead>
+                                            <tr> 
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+        {% for pc in pcom %}
+            <tr>
+                <td><a href="{{ path('commande_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+                <td>{{ commande.nom }}</td>
+                <td>{{ commande.email }}</td>
+                <td>{{ commande.adresse }}</td>
+                <td class="status--process" >{{ pc.prix }}</td>
+                <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                
+                <td>
+                     <div class="table-data-feature">
+                                                  <a href="{{ path('commande_show', { 'id': commande.id }) }}" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Show">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </a>   
+                                                </div>
+                </td>
+            </tr>
+        {% endfor %} {% endfor %}
+       </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE-->
+                                 </div>
+                                 <a href="" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        Back</a>
+                           
+                        </div>
+                     
+
+
+{% endblock %}
